@@ -15,17 +15,17 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
 	try {
 		let product = await Product.findById(req.params.id);
-		if (!product)
-			return res.status(400).send("Product With given ID is not present"); //when id is not present id db
-		return res.send(product); //everything is ok
+		if (!product) return res.status(400).send("Product not present!");
+		return res.send(product);
 	} catch (err) {
-		return res.status(400).send("Invalid ID"); // format of id is not correct
+		return res.status(400).send("Invalid ID");
 	}
 });
 router.put("/:id", validateProduct, auth, admin, async (req, res) => {
 	let product = await Product.findById(req.params.id);
-	product.name = req.body.name;
-	product.price = req.body.price;
+	product.Name = req.body.Name;
+	product.Model = req.body.Model;
+	product.Price = req.body.Price;
 	await product.save();
 	return res.send(product);
 });
@@ -35,8 +35,9 @@ router.delete("/:id", auth, admin, async (req, res) => {
 });
 router.post("/", validateProduct, auth, async (req, res) => {
 	let product = new Product();
-	product.name = req.body.name;
-	product.price = req.body.price;
+	product.Name = req.body.Name;
+	product.Model = req.body.Model;
+	product.Price = req.body.Price;
 	await product.save();
 	return res.send(product);
 });
