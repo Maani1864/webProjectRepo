@@ -4,6 +4,7 @@ var productSchema = mongoose.Schema({
 	Name: String,
 	Model: String,
 	Price: Number,
+	Picture: String,
 });
 var Product = mongoose.model("Product", productSchema);
 
@@ -12,6 +13,7 @@ function validateProduct(data) {
 		Name: Joi.string().min(2).max(100).required(),
 		Model: Joi.string().required(),
 		Price: Joi.number().min(0).required(),
+		Picture: Joi.string(),
 	});
 	return schema.validate(data, { abortEarly: false });
 }

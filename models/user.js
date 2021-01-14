@@ -26,11 +26,11 @@ function validateUser(data) {
 }
 function validateUserLogin(data) {
 	const schema = Joi.object({
-		Email: Joi.string().email().min(10).max(30).required(),
-		Password: Joi.string().min(3).required(),
+		Email: Joi.string().email().min(10).required(),
+		Password: Joi.string().min(5).required(),
 	});
 	return schema.validate(data, { abortEarly: false });
 }
 module.exports.User = User;
-module.exports.validate = validateUser; //for sign up
-module.exports.validateUserLogin = validateUserLogin; // for login
+module.exports.validate = validateUser;
+module.exports.validateUserLogin = validateUserLogin;

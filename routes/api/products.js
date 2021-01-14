@@ -26,6 +26,7 @@ router.put("/:id", validateProduct, auth, admin, async (req, res) => {
 	product.Name = req.body.Name;
 	product.Model = req.body.Model;
 	product.Price = req.body.Price;
+	product.Picture = req.body.Picture;
 	await product.save();
 	return res.send(product);
 });
@@ -38,7 +39,9 @@ router.post("/", validateProduct, auth, async (req, res) => {
 	product.Name = req.body.Name;
 	product.Model = req.body.Model;
 	product.Price = req.body.Price;
+	product.Picture = req.body.Picture;
 	await product.save();
 	return res.send(product);
 });
+
 module.exports = router;
