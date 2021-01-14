@@ -4,6 +4,7 @@ const validateProduct = require("../../middlewares/validateProduct");
 const auth = require("../../middlewares/auth");
 const admin = require("../../middlewares/admin");
 var { Product } = require("../../models/product");
+
 router.get("/", async (req, res) => {
 	console.log(req.user);
 	let page = Number(req.query.page ? req.query.page : 1);

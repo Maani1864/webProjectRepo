@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 const Joi = require("@hapi/joi");
+
 var productSchema = mongoose.Schema({
 	Name: String,
 	Model: String,
